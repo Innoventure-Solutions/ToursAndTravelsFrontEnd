@@ -1,19 +1,20 @@
-.project-page {
+.card-page {
   min-height: 100vh;
   padding: 100px 80px;
-  background: linear-gradient(180deg, #030318 0%, #0a0f3d 45%, #121b6e 100%);
+  /* background: linear-gradient(180deg, #030318 0%, #0a0f3d 45%, #121b6e 100%); */
   color: #ffffff;
+  margin-top: -20px;
 }
 
-.project-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
 
-.project-card {
+.card-card {
   position: relative;
-  width: 430px;
+  width: 410px;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   overflow: hidden;
@@ -25,7 +26,7 @@
     box-shadow 0.4s ease;
 }
 
-.project-card::before {
+.card-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -34,45 +35,45 @@
   transition: opacity 0.4s ease;
 }
 
-.project-card:hover {
+.card-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
 }
 
-.project-card:hover::before {
+.card-card:hover::before {
   opacity: 1;
 }
 
-.project-image {
-  height: 200px;
+.card-image {
+  height: 250px;
   overflow: hidden;
 }
 
-.project-image img {
+.card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.project-content {
+.card-content {
   padding: 6px 18px;
 }
 
-.project-title {
+.card-title {
   font-size: 20px;
   font-weight: 700px;
   color: #ffffff;
   margin-bottom: 8px;
 }
 
-.project-description {
+.card-description {
   font-size: 16px;
   color: #94a3b8;
   margin-bottom: 16px;
   line-height: 1.5;
 }
 
-.project-btn {
+.card-btn {
   background: transparent;
   border: none;
   color: #60a5fa;
@@ -86,44 +87,44 @@
     color 0.3s ease;
 }
 
-.project-btn:hover {
+.card-btn:hover {
   color: #93c5fd;
 }
 
 @media (max-width: 768px) {
-  .project-page {
+  .card-page {
     padding: 60px 16px;
     margin-bottom: 40px;
   }
 
-  .project-grid {
+  .card-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .project-card {
+  .card-card {
     width: 100%;
     max-width: 100%;
   }
 
-  .project-image {
+  .card-image {
     height: 180px;
   }
 
-  .project-content {
+  .card-content {
     padding: 12px 14px;
   }
 
-  .project-title {
+  .card-title {
     font-size: 18px;
   }
 
-  .project-description {
+  .card-description {
     font-size: 14px;
     line-height: 1.4;
   }
 
-  .project-btn {
+  .card-btn {
     font-size: 14px;
   }
 }
