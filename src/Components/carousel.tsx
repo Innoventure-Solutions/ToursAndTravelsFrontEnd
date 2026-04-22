@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 const images = [
-  "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80",
-  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
-  "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+  "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1",
+  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e",
+  "https://images.unsplash.com/photo-1518623489648-a173ef7824f3",
 ];
+
 const Carousel = () => {
   const [current, setCurrent] = useState(0);
 
@@ -16,25 +17,22 @@ const Carousel = () => {
 
   return (
     <div className="relative overflow-hidden rounded-2xl">
-      {/* Image */}
       <img
         src={images[current]}
-        className="w-full h-130 object-cover"
-        alt="carousel img"
+        className="w-full h-[220px] sm:h-[300px] md:h-[500px] object-cover"
+        alt="carousel"
       />
 
-      {/* Left Arrow */}
       <button
         onClick={prev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl cursor-pointer"
       >
         ❮
       </button>
 
-      {/* Right Arrow */}
       <button
         onClick={next}
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl cursor-pointer"
       >
         ❯
       </button>

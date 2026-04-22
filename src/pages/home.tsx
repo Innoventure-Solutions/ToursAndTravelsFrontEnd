@@ -3,19 +3,18 @@ import Card from "../Components/card";
 
 const Home = () => {
   return (
-    <section id="home" className="pt-20 px-6">
+    <section
+      id="home"
+      className="scroll-mt-20 pt-20 pb-10 px-4 md:px-10 bg-gray-50"
+    >
       <Carousel />
-      <div className="text-center py-14">
-        <p className="text-gray-600 mt-3 text-xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          <br /> Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat.
-          <br />
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. <br />{" "}
+
+      <div className="text-center py-8">
+        <p className="text-gray-600 text-lg md:text-xl">
+          Discover beautiful destinations and plan your perfect trip with us.
         </p>
       </div>
+
       <Card />
     </section>
   );
