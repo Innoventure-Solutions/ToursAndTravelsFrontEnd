@@ -1,11 +1,9 @@
 import { useState } from "react";
 
-const images = [
-  "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1",
-  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e",
-  "https://images.unsplash.com/photo-1518623489648-a173ef7824f3",
-];
-
+// Dynamically import all carousel images
+const imageModules = import.meta.glob("../assets/carousel/*.jpg", { eager: true });
+const images = Object.values(imageModules).map((module: any) => module.default);
+ 
 const Carousel = () => {
   const [current, setCurrent] = useState(0);
 
