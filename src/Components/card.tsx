@@ -2,7 +2,7 @@ import "./card.css";
 
 import { useNavigate } from "react-router-dom";
 
-import cities from "../data/data";
+import cities from "../data/data.ts";
 
 const Card = () => {
 
