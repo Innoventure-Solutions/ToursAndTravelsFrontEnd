@@ -1,12 +1,24 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import wanderLogo from "../assets/wander.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
+  };
+
+  const handleHomeClick = () => {
+    setIsOpen(false);
+    if (location.pathname === "/") {
+      scrollTo("home");
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -25,14 +37,17 @@ const Navbar = () => {
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-8">
         <button
-          onClick={() => scrollTo("home")}
+          onClick={handleHomeClick}
           className="font-semibold cursor-pointer"
         >
           Home
         </button>
 
         <button
-          onClick={() => scrollTo("contact")}
+          onClick={() => {
+            setIsOpen(false);
+            scrollTo("contact");
+          }}
           className="px-4 py-2 bg-orange-500 text-white hover:bg-orange-600 transition cursor-pointer font-semibold rounded-lg"
         >
           Contact Us
@@ -49,12 +64,15 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-center gap-4 py-4 md:hidden">
-          <button onClick={() => scrollTo("home")} className="font-semibold">
+          <button onClick={handleHomeClick} className="font-semibold">
             Home
           </button>
 
           <button
-            onClick={() => scrollTo("contact")}
+            onClick={() => {
+              setIsOpen(false);
+              scrollTo("contact");
+            }}
             className="px-4 py-2 bg-orange-500 text-white hover:bg-orange-600 transition font-semibold rounded-lg"
           >
             Contact Us

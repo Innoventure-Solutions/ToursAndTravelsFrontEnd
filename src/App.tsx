@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./pages/navbar";
 import Home from "./pages/home";
@@ -21,7 +22,24 @@ function MainWebsite() {
   );
 }
 
+function CityDetailsPage() {
+  return (
+    <>
+      <Navbar />
+      <CityDetails />
+      <Contact />
+      <Footer />
+    </>
+  );
+}
+
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.pathname]);
+
   return (
     <Routes>
 
@@ -32,7 +50,7 @@ function App() {
 
       <Route
         path="/city/:id"
-        element={<CityDetails />}
+        element={<CityDetailsPage />}
       />
 
     </Routes>
