@@ -224,7 +224,6 @@ const Contact = () => {
             const message = `Hey! I want to book the ${selectedPackage} tour package.`;
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-            console.log("Opening WhatsApp with URL:", url);
             window.open(url, "_blank");
           }}
         />

@@ -24,14 +24,14 @@ const Navbar = () => {
   return (
     <div className="bg-white w-full h-16 flex items-center justify-between px-4 md:px-10 shadow-md fixed top-0 left-0 z-50">
       {/* Logo */}
-      <div className="flex items-center">
+      <div className="flex items-center cursor-pointer" onClick={handleHomeClick}>
         <img
           src={wanderLogo}
           className="w-12 h-12 md:w-16 md:h-16 mt-2"
           alt="wanderlogo"
         />
-        <span className="text-blue-500 font-bold">Wander</span>
-        <span className="text-[#4CAF50] font-bold">lux</span>
+        <span className="text-blue-500 font-bold">VietJourney</span>
+        <span className="text-[#4CAF50] font-bold">360</span>
       </div>
 
       {/* Desktop Menu */}

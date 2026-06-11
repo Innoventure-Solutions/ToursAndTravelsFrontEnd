@@ -524,7 +524,7 @@ const Home = () => {
                               [tourPackage.sheet]: option.label,
                             }))
                           }
-                          className={`rounded-xl px-2 py-2 text-[10px] sm:px-3 sm:py-3 sm:text-xs transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+                          className={`rounded-xl px-2 py-2 text-[10px] sm:px-3 sm:py-3 sm:text-xs transition focus:outline-none cursor-pointer focus:ring-2 focus:ring-blue-400 ${
                             isSelected
                               ? "bg-blue-600 text-white shadow-md"
                               : "bg-gray-50 text-gray-900 hover:bg-blue-50"
