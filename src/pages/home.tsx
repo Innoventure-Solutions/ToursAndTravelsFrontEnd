@@ -489,11 +489,11 @@ const Home = () => {
                 className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-blue-600">
                       {tourPackage.sheet}
                     </p>
-                    <h3 className="mt-2 text-lg font-bold leading-snug text-gray-900">
+                    <h3 className="mt-2 text-sm font-bold leading-snug text-gray-900">
                       {tourPackage.name}
                     </h3>
                   </div>
@@ -502,7 +502,10 @@ const Home = () => {
                   </span>
                 </div>
 
-                <p className="mt-4 text-sm leading-6 text-gray-600">
+                <p
+                  className="mt-4 text-sm leading-6 text-gray-600 truncate"
+                  title={tourPackage.destinations}
+                >
                   {tourPackage.destinations}
                 </p>
 
@@ -551,7 +554,7 @@ const Home = () => {
                       hotelClass: selectedPrice,
                     })
                   }
-                  className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-bold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"
+                  className="mt-6 w-full rounded-xl bg-orange-500 px-4 py-3 font-bold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"
                 >
                   Book Now
                 </button>

@@ -63,6 +63,16 @@ const PackageBooking = ({
     }, 0);
   };
 
+  const handleWhatsApp = () => {
+    const phoneNumber = `${countryCode}${mobile}`.replace(/\D/g, "");
+    const message = `Booking request:\nPackage: ${packageTitle}\nSelected hotel: ${selectedHotelClass}\nAmount: ${amount}\nName: ${name.trim()}\nEmail: ${email.trim()}\nMobile: ${countryCode} ${mobile.trim()}`;
+    const whatsappUrl = phoneNumber
+      ? `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`
+      : `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <div className="fixed inset-0 z-60 flex items-center justify-center bg-slate-950/60 px-4 py-6">
       <div className="w-full max-w-xl overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -185,18 +195,26 @@ const PackageBooking = ({
             </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-3">
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex w-full justify-center rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50"
+              className="inline-flex w-full items-center justify-center rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50 whitespace-nowrap"
             >
               Back
             </button>
             <button
+              type="button"
+              onClick={handleWhatsApp}
+              disabled={!isValid}
+              className="inline-flex w-full items-center justify-center rounded-2xl bg-green-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-green-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 whitespace-nowrap"
+            >
+              Book with WhatsApp
+            </button>
+            <button
               type="submit"
               disabled={!isValid}
-              className="inline-flex w-full justify-center rounded-2xl bg-orange-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500"
+              className="inline-flex w-full items-center justify-center rounded-2xl bg-orange-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 whitespace-nowrap"
             >
               Book
             </button>
