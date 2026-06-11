@@ -474,7 +474,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {packages.map((tourPackage) => {
             const priceOptions = [
               { label: "3 Star", price: tourPackage.threeStarPrice },
@@ -486,7 +486,7 @@ const Home = () => {
             return (
               <article
                 key={tourPackage.sheet}
-                className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="min-w-0 flex min-h-0 h-full flex-col rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-5"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
@@ -509,55 +509,57 @@ const Home = () => {
                   {tourPackage.destinations}
                 </p>
 
-                <div className="mt-5 grid grid-cols-3 gap-2 border-t border-gray-100 pt-4 text-center">
-                  {priceOptions.map((option) => {
-                    const isSelected = selectedPrice === option.label;
+                <div className="mt-auto border-t border-gray-100 pt-4">
+                  <div className="grid grid-cols-3 gap-1 text-center sm:gap-2">
+                    {priceOptions.map((option) => {
+                      const isSelected = selectedPrice === option.label;
 
-                    return (
-                      <button
-                        key={option.label}
-                        type="button"
-                        onClick={() =>
-                          setSelectedPrices((currentPrices) => ({
-                            ...currentPrices,
-                            [tourPackage.sheet]: option.label,
-                          }))
-                        }
-                        className={`rounded-xl p-3 transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                          isSelected
-                            ? "bg-blue-600 text-white shadow-md"
-                            : "bg-gray-50 text-gray-900 hover:bg-blue-50"
-                        }`}
-                      >
-                        <span
-                          className={`block text-xs font-semibold ${
-                            isSelected ? "text-white" : "text-gray-500"
+                      return (
+                        <button
+                          key={option.label}
+                          type="button"
+                          onClick={() =>
+                            setSelectedPrices((currentPrices) => ({
+                              ...currentPrices,
+                              [tourPackage.sheet]: option.label,
+                            }))
+                          }
+                          className={`rounded-xl px-2 py-2 text-[10px] sm:px-3 sm:py-3 sm:text-xs transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+                            isSelected
+                              ? "bg-blue-600 text-white shadow-md"
+                              : "bg-gray-50 text-gray-900 hover:bg-blue-50"
                           }`}
                         >
-                          {option.label}
-                        </span>
-                        <span className="mt-1 block text-lg font-bold">
-                          {option.price}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                          <span
+                            className={`block truncate text-[10px] font-semibold leading-tight ${
+                              isSelected ? "text-white" : "text-gray-500"
+                            }`}
+                          >
+                            {option.label}
+                          </span>
+                          <span className="mt-1 block text-sm font-bold leading-tight sm:text-lg">
+                            {option.price}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
 
-                <button
-                  type="button"
-                  disabled={!selectedPrice}
-                  onClick={() =>
-                    selectedPrice &&
-                    setActiveBooking({
-                      details: tourPackage.details,
-                      hotelClass: selectedPrice,
-                    })
-                  }
-                  className="mt-6 w-full rounded-xl bg-orange-500 px-4 py-3 font-bold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"
-                >
-                  Book Now
-                </button>
+                  <button
+                    type="button"
+                    disabled={!selectedPrice}
+                    onClick={() =>
+                      selectedPrice &&
+                      setActiveBooking({
+                        details: tourPackage.details,
+                        hotelClass: selectedPrice,
+                      })
+                    }
+                    className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-bold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"
+                  >
+                    Book Now
+                  </button>
+                </div>
               </article>
             );
           })}

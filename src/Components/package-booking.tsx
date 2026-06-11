@@ -64,7 +64,7 @@ const PackageBooking = ({
   };
 
   const handleWhatsApp = () => {
-    const phoneNumber = `${countryCode}${mobile}`.replace(/\D/g, "");
+    const phoneNumber = `918056111314`; // use country code, no +
     const message = `Booking request:\nPackage: ${packageTitle}\nSelected hotel: ${selectedHotelClass}\nAmount: ${amount}\nName: ${name.trim()}\nEmail: ${email.trim()}\nMobile: ${countryCode} ${mobile.trim()}`;
     const whatsappUrl = phoneNumber
       ? `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`
@@ -75,8 +75,8 @@ const PackageBooking = ({
 
   return (
     <div className="fixed inset-0 z-60 flex items-center justify-center bg-slate-950/60 px-4 py-6">
-      <div className="w-full max-w-xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-        <div className="flex items-start justify-between gap-4 border-b border-slate-200 bg-slate-900 px-6 py-5 text-white">
+      <div className="flex max-h-[90dvh] w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl">
+        <div className="flex shrink-0 items-start justify-between gap-4 border-b border-slate-200 bg-slate-900 px-6 py-5 text-white">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
               Booking Form
@@ -102,7 +102,7 @@ const PackageBooking = ({
           target="_blank"
           noValidate
           onSubmit={handleSubmit}
-          className="space-y-6 px-6 py-6"
+          className="min-h-0 flex-1 space-y-6 overflow-y-auto px-6 py-6"
         >
           <input type="hidden" name="_subject" value="New travel booking request" />
           <input type="hidden" name="_replyto" value={email} />

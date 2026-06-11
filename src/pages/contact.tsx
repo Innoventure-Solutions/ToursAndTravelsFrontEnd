@@ -77,7 +77,7 @@ const Contact = () => {
             <img src={phoneIcon} alt="" className="w-5 mt-1" />
             <div>
               <p className="font-semibold">Phone</p>
-              <p className="text-gray-300">+91 8056111314</p>
+              <p className="text-gray-300">+91 7338866011</p>
             </div>
           </div>
 
@@ -164,6 +164,7 @@ const Contact = () => {
                 className={`w-full rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-black ${packageError ? "border-red-500 ring-1 ring-red-500" : "border border-gray-300"}`}
               >
                 <option value="">Select Tour Package</option>
+                <option value="Group Tour">Group Tour</option>
                 <option value="Custom">Custom Package</option>
                 <option value="Package 1">Package 1</option>
                 <option value="Package 2">Package 2</option>
@@ -222,6 +223,8 @@ const Contact = () => {
             const phoneNumber = "918056111314"; // use country code, no +
             const message = `Hey! I want to book the ${selectedPackage} tour package.`;
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            console.log("Opening WhatsApp with URL:", url);
             window.open(url, "_blank");
           }}
         />

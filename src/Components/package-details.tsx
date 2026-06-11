@@ -51,8 +51,8 @@ const PackageDetails = ({
 
   return (
     <div className="fixed inset-0 z-60 flex items-center justify-center bg-slate-950/60 px-4 py-6">
-      <div className="max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl">
-        <div className="flex items-start justify-between gap-4 bg-slate-800 px-5 py-5 text-white md:px-8">
+      <div className="flex max-h-[90dvh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+        <div className="flex shrink-0 items-start justify-between gap-4 bg-slate-800 px-5 py-5 text-white md:px-8">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
               Booking Details
@@ -74,7 +74,7 @@ const PackageDetails = ({
           </button>
         </div>
 
-        <div className="max-h-[calc(90vh-132px)] overflow-y-auto px-5 py-6 md:px-8">
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-6 md:px-8">
           <div className="grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
@@ -161,11 +161,11 @@ const PackageDetails = ({
             </section>
           )}
 
-          <div className="sticky bottom-0 mt-6 flex flex-col gap-3 border-t border-gray-100 bg-white pt-4 sm:flex-row sm:justify-end">
+          <div className="sticky bottom-0 mt-6 flex flex-col gap-3 border-t border-gray-100 bg-transparent pt-4 sm:flex-row sm:justify-end">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-gray-300 px-5 py-3 font-bold text-slate-700 transition hover:bg-gray-50"
+              className="rounded-xl border border-gray-300 px-5 py-3 font-bold text-slate-700 transition hover:bg-gray-200 bg-white"
             >
               Close
             </button>
