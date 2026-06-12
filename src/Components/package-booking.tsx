@@ -32,7 +32,7 @@ const PackageBooking = ({
   onBack,
   onBook,
 }: BookingFormProps) => {
-  const [countryCode, setCountryCode] = useState(countryCodes[0].value);
+  const [countryCode, setCountryCode] = useState(countryCodes[1].value);
   const [mobile, setMobile] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,7 +64,7 @@ const PackageBooking = ({
   };
 
   const handleWhatsApp = () => {
-    const phoneNumber = `918056111314`; // use country code, no +
+    const phoneNumber = `917338866011`; // use country code, no +
     const message = `Booking request:\nPackage: ${packageTitle}\nSelected hotel: ${selectedHotelClass}\nAmount: ${amount}\nName: ${name.trim()}\nEmail: ${email.trim()}\nMobile: ${countryCode} ${mobile.trim()}`;
     const whatsappUrl = phoneNumber
       ? `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`

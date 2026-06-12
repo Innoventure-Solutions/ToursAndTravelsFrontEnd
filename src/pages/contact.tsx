@@ -220,7 +220,7 @@ const Contact = () => {
               return;
             }
 
-            const phoneNumber = "918056111314"; // use country code, no +
+            const phoneNumber = "917338866011"; // use country code, no +
             const message = `Hey! I want to book the ${selectedPackage} tour package.`;
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
