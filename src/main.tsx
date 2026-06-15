@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 import App from "./App";
 
@@ -13,11 +14,15 @@ ReactDOM.createRoot(
 
   <React.StrictMode>
 
-    <BrowserRouter>
+    <HelmetProvider>
 
-      <App />
+      <BrowserRouter>
 
-    </BrowserRouter>
+        <App />
+
+      </BrowserRouter>
+
+    </HelmetProvider>
 
   </React.StrictMode>
 

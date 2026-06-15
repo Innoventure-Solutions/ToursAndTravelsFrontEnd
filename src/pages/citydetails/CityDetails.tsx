@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 
 import cities from "../../data/data";
@@ -14,11 +15,50 @@ const CityDetails = () => {
   );
 
   if (!city) {
-    return <h1>City Not Found</h1>;
+    return (
+      <>
+        <Helmet>
+          <title>City Not Found | VietJourney 360</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <h1>City Not Found</h1>
+      </>
+    );
   }
+
+  const pageTitle = `${city.title} Tour | VietJourney 360`;
+  const canonicalUrl = `https://vietjourney360.com/city/${city.id}`;
+  const absoluteCoverImage = `https://vietjourney360.com${city.coverImage}`;
+
+  const touristDestinationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    name: city.title,
+    description: city.shortDescription,
+    image: city.gallery.map((image) => `https://vietjourney360.com${image}`),
+    url: canonicalUrl,
+    touristType: "Leisure",
+    isPartOf: {
+      "@type": "Country",
+      name: "Vietnam",
+    },
+  };
 
   return (
     <div className="details-page">
+
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={city.shortDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={city.shortDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={absoluteCoverImage} />
+        <script type="application/ld+json">
+          {JSON.stringify(touristDestinationJsonLd)}
+        </script>
+      </Helmet>
 
       <button
         type="button"
@@ -48,7 +88,8 @@ const CityDetails = () => {
             <img
               key={index}
               src={image}
-              alt=""
+              alt={`${city.title} - photo ${index + 1}`}
+              loading="lazy"
               className="gallery-image"
             />
 

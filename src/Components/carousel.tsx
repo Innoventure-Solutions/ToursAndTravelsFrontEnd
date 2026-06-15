@@ -23,11 +23,11 @@ const Carousel = () => {
 
       {current === 0 && (
         <div className="absolute inset-0 flex flex-col items-start justify-center bg-black/30 text-left px-6 sm:px-10 md:px-16">
-          <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg">
             Explore <span className="text-orange-500">Vietnam</span>
-          </h2>
+          </h1>
           <p className="mt-2 text-sm sm:text-lg md:text-2xl font-medium text-white/90 drop-shadow-lg">
-            Discover breathtaking destinations, made just for your journey.
+            Vietnam tour packages &amp; travel itineraries crafted by VietJourney 360 - discover breathtaking destinations, made just for your journey.
           </p>
         </div>
       )}

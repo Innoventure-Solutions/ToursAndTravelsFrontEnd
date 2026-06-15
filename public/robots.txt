@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vietjourney360.com/sitemap.xml

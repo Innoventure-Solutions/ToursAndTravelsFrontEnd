@@ -1,4 +1,5 @@
 ﻿import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 import Carousel from "../Components/carousel";
 import Card from "../Components/card";
@@ -454,11 +455,51 @@ const Home = () => {
   const [activeBooking, setActiveBooking] = useState<ActiveBooking | null>(null);
   const [bookingRequest, setBookingRequest] = useState<ActiveBooking | null>(null);
 
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Vietnam Tour Packages",
+    itemListElement: packages.map((tourPackage, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "TouristTrip",
+        name: tourPackage.details.title,
+        description: tourPackage.destinations,
+        touristType: "Leisure",
+        itinerary: {
+          "@type": "ItemList",
+          itemListElement: tourPackage.details.itinerary.map((day, dayIndex) => ({
+            "@type": "ListItem",
+            position: dayIndex + 1,
+            name: day.title,
+          })),
+        },
+        offers: tourPackage.details.pricing.map((price) => ({
+          "@type": "Offer",
+          name: price.label,
+          price: price.price.replace(/[^0-9.]/g, ""),
+          priceCurrency: "INR",
+        })),
+      },
+    })),
+  };
+
   return (
     <section
       id="home"
       className="scroll-mt-20 pt-20 pb-10 px-4 md:px-10 bg-gray-50"
     >
+      <Helmet>
+        <title>VietJourney 360 | Best Vietnam Tour Packages & Travel Agency</title>
+        <meta
+          name="description"
+          content="Explore Vietnam tour packages from VietJourney 360 - Hanoi, Ha Long Bay, Sapa, Ninh Binh, Da Nang, Hoi An & Ho Chi Minh City. Group tours, custom itineraries, 3/4/5-star hotels."
+        />
+        <link rel="canonical" href="https://vietjourney360.com/" />
+        <script type="application/ld+json">{JSON.stringify(itemListJsonLd)}</script>
+      </Helmet>
+
       <Carousel />
 
       <section className="mx-auto mt-10 max-w-7xl">
