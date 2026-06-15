@@ -164,12 +164,12 @@ const Contact = () => {
                 className={`w-full rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-black ${packageError ? "border-red-500 ring-1 ring-red-500" : "border border-gray-300"}`}
               >
                 <option value="">Select Tour Package</option>
-                <option value="Group Tour">Group Tour</option>
-                <option value="Custom">Custom Package</option>
-                <option value="Package 1">Package 1</option>
-                <option value="Package 2">Package 2</option>
-                <option value="Package 3">Package 3</option>
-                <option value="Package 4">Package 4</option>
+                <option value="👥 Group Tour">👥 Group Tour</option>
+                <option value="🎨 Custom Package">🎨 Custom Package</option>
+                <option value="🌿 Northern Vietnam Essentials">🌿 Northern Vietnam Essentials</option>
+                <option value="🚢 Ha Long Cruise Escape">🚢 Ha Long Cruise Escape</option>
+                <option value="🏔️ Peaks & Bays of Vietnam">🏔️ Peaks & Bays of Vietnam</option>
+                <option value="✨ Vietnam Discovery Journey">✨ Vietnam Discovery Journey</option>
               </select>
               {packageError && (
                 <p className="mt-2 text-sm text-red-600">

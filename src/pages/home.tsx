@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 import Carousel from "../Components/carousel";
 import Card from "../Components/card";
@@ -33,13 +33,13 @@ const commonIncluded = [
 const commonExcluded = ["Tips & gratuities", "Beverages", "Personal expenses"];
 
 const packageOneDetails: PackageDetailsData = {
-  title: "Package 1 - Hanoi - Ha Long - Ninh Binh",
+  title: "🌿 Northern Vietnam Essentials",
   duration: "4 Days / 3 Nights",
   destinations: "Hanoi - Ha Long Bay - Ninh Binh",
   pricing: [
-    { label: "3-Star Hotel", price: "$216 USD" },
-    { label: "4-Star Hotel", price: "$336 USD" },
-    { label: "5-Star Hotel", price: "$456 USD" },
+    { label: "3-Star Hotel", price: "₹216" },
+    { label: "4-Star Hotel", price: "₹336" },
+    { label: "5-Star Hotel", price: "₹456" },
   ],
   included: commonIncluded,
   excluded: commonExcluded,
@@ -95,13 +95,13 @@ const packageOneDetails: PackageDetailsData = {
 };
 
 const packageTwoDetails: PackageDetailsData = {
-  title: "Package 2 - Hanoi - Ha Long - Ninh Binh",
+  title: "🚢 Ha Long Cruise Escape",
   duration: "5 Days / 4 Nights",
   destinations: "Hanoi - Ha Long Bay overnight cruise - Ninh Binh",
   pricing: [
-    { label: "3-Star Hotel", price: "$467 USD" },
-    { label: "4-Star Hotel", price: "$588 USD" },
-    { label: "5-Star Hotel", price: "$708 USD" },
+    { label: "3-Star Hotel", price: "₹467" },
+    { label: "4-Star Hotel", price: "₹588" },
+    { label: "5-Star Hotel", price: "₹708" },
   ],
   included: [
     "Airport transfers (pick-up & drop-off)",
@@ -181,14 +181,14 @@ const packageTwoDetails: PackageDetailsData = {
 };
 
 const packageThreeDetails: PackageDetailsData = {
-  title: "Package 3 - Hanoi - Ha Long - Sapa",
+  title: "🏔️ Peaks & Bays of Vietnam",
   duration: "6 Days / 5 Nights",
   destinations:
     "Hanoi - Ha Long Bay overnight cruise - Sapa, Cat Cat Village, Lao Chai-Ta Van trek, Fansipan",
   pricing: [
-    { label: "3-Star Hotel", price: "$576 USD" },
-    { label: "4-Star Hotel", price: "$696 USD" },
-    { label: "5-Star Hotel", price: "$816 USD" },
+    { label: "3-Star Hotel", price: "₹576" },
+    { label: "4-Star Hotel", price: "₹696" },
+    { label: "5-Star Hotel", price: "₹816" },
   ],
   included: [
     "Airport transfers (pick-up & drop-off)",
@@ -279,14 +279,14 @@ const packageThreeDetails: PackageDetailsData = {
 };
 
 const packageFourDetails: PackageDetailsData = {
-  title: "Package 4 - Hanoi, Central Vietnam & Hoi An",
+  title: "✨ Vietnam Discovery Journey",
   duration: "8 Days / 7 Nights",
   destinations:
     "Hanoi - Ha Long Bay - Ninh Binh - Da Nang - Ba Na Hills - Marble Mountain - Hoi An",
   pricing: [
-    { label: "3-Star Hotel", price: "$456 USD" },
-    { label: "4-Star Hotel", price: "$696 USD" },
-    { label: "5-Star Hotel", price: "$1056 USD" },
+    { label: "3-Star Hotel", price: "₹456" },
+    { label: "4-Star Hotel", price: "₹696" },
+    { label: "5-Star Hotel", price: "₹1056" },
   ],
   included: [
     "Airport transfers (pick-up & drop-off)",
@@ -406,44 +406,44 @@ const packageFourDetails: PackageDetailsData = {
 
 const packages: TourPackage[] = [
   {
-    name: "Hanoi - Ha Long - Ninh Binh",
+    name: "🌿 Northern Vietnam Essentials",
     duration: "4 Days / 3 Nights",
     destinations: "Hanoi - Ha Long Bay - Ninh Binh",
-    threeStarPrice: "$216",
-    fourStarPrice: "$336",
-    fiveStarPrice: "$456",
+    threeStarPrice: "₹216",
+    fourStarPrice: "₹336",
+    fiveStarPrice: "₹456",
     sheet: "Package 1",
     details: packageOneDetails,
   },
   {
-    name: "Hanoi - Ha Long - Ninh Binh",
+    name: "🚢 Ha Long Cruise Escape",
     duration: "5 Days / 4 Nights",
     destinations: "Hanoi - Ha Long Bay overnight cruise - Ninh Binh",
-    threeStarPrice: "$467",
-    fourStarPrice: "$588",
-    fiveStarPrice: "$708",
+    threeStarPrice: "₹467",
+    fourStarPrice: "₹588",
+    fiveStarPrice: "₹708",
     sheet: "Package 2",
     details: packageTwoDetails,
   },
   {
-    name: "Hanoi - Ha Long - Sapa",
+    name: "🏔️ Peaks & Bays of Vietnam",
     duration: "6 Days / 5 Nights",
     destinations:
       "Hanoi - Ha Long Bay overnight cruise - Sapa, Cat Cat Village, Lao Chai-Ta Van trek, Fansipan",
-    threeStarPrice: "$576",
-    fourStarPrice: "$696",
-    fiveStarPrice: "$816",
+    threeStarPrice: "₹576",
+    fourStarPrice: "₹696",
+    fiveStarPrice: "₹816",
     sheet: "Package 3",
     details: packageThreeDetails,
   },
   {
-    name: "Hanoi, Central Vietnam & Hoi An",
+    name: "✨ Vietnam Discovery Journey",
     duration: "8 Days / 7 Nights",
     destinations:
       "Hanoi - Ha Long Bay - Ninh Binh - Da Nang - Ba Na Hills - Marble Mountain - Hoi An",
-    threeStarPrice: "$456",
-    fourStarPrice: "$696",
-    fiveStarPrice: "$1056",
+    threeStarPrice: "₹456",
+    fourStarPrice: "₹696",
+    fiveStarPrice: "₹1056",
     sheet: "Package 4",
     details: packageFourDetails,
   },

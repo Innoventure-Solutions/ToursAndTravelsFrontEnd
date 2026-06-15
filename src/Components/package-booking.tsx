@@ -12,6 +12,8 @@ type BookingFormProps = {
     email: string;
     countryCode: string;
     mobile: string;
+    checkInDate: string;
+    checkOutDate: string;
   }) => void;
 };
 
@@ -36,6 +38,8 @@ const PackageBooking = ({
   const [mobile, setMobile] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -59,13 +63,24 @@ const PackageBooking = ({
     }
 
     setTimeout(() => {
-      onBook({ name: name.trim(), email: email.trim(), countryCode, mobile: mobile.trim() });
+      onBook({
+        name: name.trim(),
+        email: email.trim(),
+        countryCode,
+        mobile: mobile.trim(),
+        checkInDate,
+        checkOutDate,
+      });
     }, 0);
   };
 
   const handleWhatsApp = () => {
     const phoneNumber = `917338866011`; // use country code, no +
-    const message = `Booking request:\nPackage: ${packageTitle}\nSelected hotel: ${selectedHotelClass}\nAmount: ${amount}\nName: ${name.trim()}\nEmail: ${email.trim()}\nMobile: ${countryCode} ${mobile.trim()}`;
+    const dates =
+      checkInDate || checkOutDate
+        ? `\nCheck-in: ${checkInDate || "N/A"}\nCheck-out: ${checkOutDate || "N/A"}`
+        : "";
+    const message = `Booking request:\nPackage: ${packageTitle}\nSelected hotel: ${selectedHotelClass}\nAmount: ${amount}\nName: ${name.trim()}\nEmail: ${email.trim()}\nMobile: ${countryCode} ${mobile.trim()}${dates}`;
     const whatsappUrl = phoneNumber
       ? `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`
       : `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
@@ -193,6 +208,33 @@ const PackageBooking = ({
                 className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm text-slate-700 outline-none focus:border-slate-500 focus:ring-2 focus:ring-sky-100"
               />
             </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="block">
+              <span className="text-sm font-semibold text-slate-700">
+                Check-in date <span className="text-slate-400">(optional)</span>
+              </span>
+              <input
+                type="date"
+                name="checkin_date"
+                value={checkInDate}
+                onChange={(e) => setCheckInDate(e.target.value)}
+                className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm text-slate-700 outline-none focus:border-slate-500 focus:ring-2 focus:ring-sky-100"
+              />
+            </label>
+            <label className="block">
+              <span className="text-sm font-semibold text-slate-700">
+                Check-out date <span className="text-slate-400">(optional)</span>
+              </span>
+              <input
+                type="date"
+                name="checkout_date"
+                value={checkOutDate}
+                onChange={(e) => setCheckOutDate(e.target.value)}
+                className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm text-slate-700 outline-none focus:border-slate-500 focus:ring-2 focus:ring-sky-100"
+              />
+            </label>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
