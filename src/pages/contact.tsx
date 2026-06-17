@@ -1,18 +1,60 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import emailIcon from "../assets/communication.png";
 import phoneIcon from "../assets/phone.png";
 import locationIcon from "../assets/pin.png";
 import whatappIcon from "../assets/whatsapp.png";
 import arrowIcon from "../assets/arrow.png";
 
+const tourPackageOptions = [
+  "Group",
+  "Custom Package",
+  "North Vietnam Classic",
+  "North Vietnam Explorer",
+  "Central Vietnam Complete",
+  "South Vietnam + Highlands",
+  "Vietnam Honeymoon Premium",
+  "Family Fun Circuit",
+  "Senior Comfort Vietnam",
+  "North-Central Adventure",
+  "Central Coast Escape",
+  "Southern Coast & Mui Ne",
+  "Con Dao Island Escape",
+];
+
 const Contact = () => {
   const [selectedPackage, setSelectedPackage] = useState("");
   const [packageError, setPackageError] = useState(false);
+  const [packageSearch, setPackageSearch] = useState("");
+  const [isPackageDropdownOpen, setIsPackageDropdownOpen] = useState(false);
+  const packageDropdownRef = useRef<HTMLDivElement>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
   const [submitError, setSubmitError] = useState("");
+
+  const filteredPackageOptions = tourPackageOptions.filter((option) =>
+    option.toLowerCase().includes(packageSearch.trim().toLowerCase()),
+  );
+
+  useEffect(() => {
+    if (!isPackageDropdownOpen) {
+      return;
+    }
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        packageDropdownRef.current &&
+        !packageDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsPackageDropdownOpen(false);
+        setPackageSearch("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isPackageDropdownOpen]);
 
   const formAction = import.meta.env.VITE_FORMSUBMIT_EMAIL
     ? `https://formsubmit.co/${import.meta.env.VITE_FORMSUBMIT_EMAIL}`
@@ -150,27 +192,64 @@ const Contact = () => {
             </div>
 
             {/* Tour Packages */}
-            <div>
+            <div ref={packageDropdownRef} className="relative">
               <label className="block mb-2 text-sm font-medium">
                 Tour Packages
               </label>
-              <select
-                name="tour_package"
-                value={selectedPackage}
-                onChange={(e) => {
-                  setSelectedPackage(e.target.value);
-                  setPackageError(false);
+              <input type="hidden" name="tour_package" value={selectedPackage} />
+              <input
+                type="text"
+                readOnly
+                value={isPackageDropdownOpen ? packageSearch : selectedPackage}
+                onChange={(e) => setPackageSearch(e.target.value)}
+                onFocus={() => {
+                  setIsPackageDropdownOpen(true);
+                  setPackageSearch("");
                 }}
-                className={`w-full rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-black ${packageError ? "border-red-500 ring-1 ring-red-500" : "border border-gray-300"}`}
-              >
-                <option value="">Select Tour Package</option>
-                <option value="👥 Group Tour">👥 Group Tour</option>
-                <option value="🎨 Custom Package">🎨 Custom Package</option>
-                <option value="🌿 Northern Vietnam Essentials">🌿 Northern Vietnam Essentials</option>
-                <option value="🚢 Ha Long Cruise Escape">🚢 Ha Long Cruise Escape</option>
-                <option value="🏔️ Peaks & Bays of Vietnam">🏔️ Peaks & Bays of Vietnam</option>
-                <option value="✨ Vietnam Discovery Journey">✨ Vietnam Discovery Journey</option>
-              </select>
+                placeholder="Search tour package..."
+                className={`w-full rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-black cursor-pointer ${packageError ? "border-red-500 ring-1 ring-red-500" : "border border-gray-300"}`}
+              />
+
+              {isPackageDropdownOpen && (
+                <div className="absolute z-20 mt-2 w-full overflow-hidden rounded-xl border border-gray-300 bg-white shadow-lg">
+                  <input
+                    type="text"
+                    autoFocus
+                    value={packageSearch}
+                    onChange={(e) => setPackageSearch(e.target.value)}
+                    placeholder="Type to search..."
+                    className="w-full border-b border-gray-200 px-4 py-3 outline-none"
+                  />
+                  <ul className="max-h-56 overflow-y-auto">
+                    {filteredPackageOptions.length === 0 && (
+                      <li className="px-4 py-3 text-sm text-gray-500">
+                        No packages found
+                      </li>
+                    )}
+                    {filteredPackageOptions.map((option) => (
+                      <li key={option}>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedPackage(option);
+                            setPackageError(false);
+                            setIsPackageDropdownOpen(false);
+                            setPackageSearch("");
+                          }}
+                          className={`block w-full px-4 py-3 text-left text-sm hover:bg-blue-50 ${
+                            selectedPackage === option
+                              ? "bg-blue-50 font-semibold text-blue-600"
+                              : "text-gray-900"
+                          }`}
+                        >
+                          {option}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {packageError && (
                 <p className="mt-2 text-sm text-red-600">
                   Please select a tour package before contacting us.
