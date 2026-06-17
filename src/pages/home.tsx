@@ -6,6 +6,18 @@ import Card from "../Components/card";
 import PackageBooking from "../Components/package-booking";
 import PackageDetails, { type PackageDetailsData } from "../Components/package-details";
 
+import packageOneImage from "../assets/NORTH VIETNAM/Halong Bay/Halong_Bay.jpg";
+import packageTwoImage from "../assets/NORTH VIETNAM/Sapa/Sapa.jpg";
+import packageThreeImage from "../assets/CENTRAL VIETNAM/Hoi An/ejrkrnejrg.jpg";
+import packageFourImage from "../assets/SOUTH VIETNAM/Ho Chi Minh City/Ho_Chi_Minh_City.jpg";
+import packageFiveImage from "../assets/SOUTH VIETNAM/Phu Quoc/Phu_Quoc.jpg";
+import packageSixImage from "../assets/NORTH VIETNAM/Halong Bay/Halong_Bay1.jpg";
+import packageSevenImage from "../assets/NORTH VIETNAM/Ninh Binh/ninh-binh.jpg";
+import packageEightImage from "../assets/CENTRAL VIETNAM/Phong Nha/kejn.jpg";
+import packageNineImage from "../assets/CENTRAL VIETNAM/Da Nang/ekrrjngke.jpg";
+import packageTenImage from "../assets/CENTRAL VIETNAM/Mui Ne/eknekrgj.jpg";
+import packageElevenImage from "../assets/SOUTH VIETNAM/Con Dao/Con_Dao.jpg";
+
 type TourPackage = {
   name: string;
   duration: string;
@@ -14,6 +26,7 @@ type TourPackage = {
   fourStarPrice: string;
   fiveStarPrice: string;
   sheet: string;
+  image: string;
   details: PackageDetailsData;
 };
 
@@ -1418,6 +1431,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹49,500",
     fiveStarPrice: "₹68,000",
     sheet: "Package 1",
+    image: packageOneImage,
     details: packageOneDetails,
   },
   {
@@ -1428,6 +1442,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹73,000",
     fiveStarPrice: "₹1,09,000",
     sheet: "Package 2",
+    image: packageTwoImage,
     details: packageTwoDetails,
   },
   {
@@ -1438,6 +1453,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹66,000",
     fiveStarPrice: "₹1,07,500",
     sheet: "Package 3",
+    image: packageThreeImage,
     details: packageThreeDetails,
   },
   {
@@ -1448,6 +1464,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹73,000",
     fiveStarPrice: "₹1,11,500",
     sheet: "Package 4",
+    image: packageFourImage,
     details: packageFourDetails,
   },
   {
@@ -1458,6 +1475,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹1,42,000",
     fiveStarPrice: "₹2,11,000",
     sheet: "Package 5",
+    image: packageFiveImage,
     details: packageFiveDetails,
   },
   {
@@ -1468,6 +1486,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹1,24,500*",
     fiveStarPrice: "Contact us",
     sheet: "Package 6",
+    image: packageSixImage,
     details: packageSixDetails,
   },
   {
@@ -1478,6 +1497,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹1,31,500",
     fiveStarPrice: "₹1,82,500",
     sheet: "Package 7",
+    image: packageSevenImage,
     details: packageSevenDetails,
   },
   {
@@ -1488,6 +1508,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹75,000",
     fiveStarPrice: "₹1,12,000",
     sheet: "Package 8",
+    image: packageEightImage,
     details: packageEightDetails,
   },
   {
@@ -1498,6 +1519,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹63,500",
     fiveStarPrice: "₹1,02,000",
     sheet: "Package 9",
+    image: packageNineImage,
     details: packageNineDetails,
   },
   {
@@ -1508,6 +1530,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹74,000",
     fiveStarPrice: "₹1,12,000",
     sheet: "Package 10",
+    image: packageTenImage,
     details: packageTenDetails,
   },
   {
@@ -1518,6 +1541,7 @@ const packages: TourPackage[] = [
     fourStarPrice: "₹93,500",
     fiveStarPrice: "₹1,36,500",
     sheet: "Package 11",
+    image: packageElevenImage,
     details: packageElevenDetails,
   },
 ];
@@ -1544,6 +1568,14 @@ const PackageCard = memo(({ tourPackage, onBookNow }: PackageCardProps) => {
 
   return (
     <article className="min-w-0 flex min-h-0 h-full flex-col rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-5">
+      <img
+        src={tourPackage.image}
+        alt={`${tourPackage.name} tour package - ${tourPackage.destinations}`}
+        loading="lazy"
+        width={400}
+        height={240}
+        className="mb-4 h-40 w-full rounded-xl object-cover"
+      />
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-blue-600">{tourPackage.sheet}</p>
@@ -1628,6 +1660,7 @@ const Home = () => {
         "@type": "TouristTrip",
         name: tourPackage.details.title,
         description: tourPackage.destinations,
+        image: `https://vietjourney360.com${tourPackage.image}`,
         touristType: "Leisure",
         itinerary: {
           "@type": "ItemList",
