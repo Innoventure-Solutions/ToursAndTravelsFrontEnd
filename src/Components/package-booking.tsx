@@ -40,6 +40,7 @@ const PackageBooking = ({
   const [email, setEmail] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
+  const todayStr = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -219,7 +220,14 @@ const PackageBooking = ({
                 type="date"
                 name="checkin_date"
                 value={checkInDate}
-                onChange={(e) => setCheckInDate(e.target.value)}
+                min={todayStr}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setCheckInDate(value);
+                  if (checkOutDate && checkOutDate < value) {
+                    setCheckOutDate("");
+                  }
+                }}
                 className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm text-slate-700 outline-none focus:border-slate-500 focus:ring-2 focus:ring-sky-100"
               />
             </label>
@@ -231,6 +239,7 @@ const PackageBooking = ({
                 type="date"
                 name="checkout_date"
                 value={checkOutDate}
+                min={checkInDate || todayStr}
                 onChange={(e) => setCheckOutDate(e.target.value)}
                 className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm text-slate-700 outline-none focus:border-slate-500 focus:ring-2 focus:ring-sky-100"
               />
